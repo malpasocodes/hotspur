@@ -51,7 +51,7 @@ try:
     print(f"Parsed {len(segments)} segments")
     
     # Save segments in smaller batches
-    output_file = Path("hotspur_search/data/shakespeare_segments.json")
+    output_file = Path("hotspur_search/data/shakespeare_segments_fixed.json")
     batch_size = 1000
     all_segments = []
     
