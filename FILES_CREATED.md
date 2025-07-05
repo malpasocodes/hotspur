@@ -34,6 +34,8 @@ force_rebuild.py                        # Complete system rebuild
 rebuild_search_index.py                # Index rebuild script
 fix_parser.py                          # Fixed Shakespeare parser
 verify_setup.py                        # Setup verification
+debug_work_filtering.py                # Work filtering diagnosis (bug fix)
+fix_work_filtering.py                  # Work filtering fix implementation
 ```
 
 ## Modified Files
@@ -49,6 +51,7 @@ README.md                              # Complete rewrite for Hotspur vision
 finetune_shakespeare.py               # Updated docstring for Hotspur
 quick_start.py                        # Updated docstring for Hotspur
 TRAINING_STATUS.md                    # Updated title for Hotspur
+hotspur_search/utils/search_engine.py # Fixed work_title field schema (bug fix)
 ```
 
 ### Documentation Updates

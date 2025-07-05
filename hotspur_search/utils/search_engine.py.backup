@@ -39,7 +39,7 @@ class ShakespeareSearchEngine:
             text_lower=TEXT(stored=False),  # Lowercase for case-insensitive search
             
             # Metadata (stored and some searchable)
-            work_title=ID(stored=True),  # Changed from TEXT to ID for exact matching
+            work_title=TEXT(stored=True, field_boost=2.0),
             work_type=KEYWORD(stored=True),
             line_number=NUMERIC(stored=True),
             

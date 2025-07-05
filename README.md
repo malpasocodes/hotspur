@@ -182,11 +182,13 @@ Hotspur includes a powerful search component that provides immediate value:
 
 **🚀 Try it now**: `python hotspur_search/setup_search.py`
 
-### 🎉 Current Status: **SEARCH COMPONENT COMPLETE**
+### 🎉 Current Status: **SEARCH COMPONENT COMPLETE & TESTED**
 - ✅ **93,812 searchable text segments** across 31 Shakespeare works
 - ✅ **Sub-second search performance** with multiple query types
+- ✅ **Work-specific filtering** - search within individual plays (bug fixed)
 - ✅ **Scholar-friendly features**: citations, exports, metadata
 - ✅ **Production-ready interface** with Streamlit web app
+- ✅ **User-validated** - real-world testing and bug fixes applied
 
 ## 🎓 Use Cases for Scholars and Enthusiasts
 

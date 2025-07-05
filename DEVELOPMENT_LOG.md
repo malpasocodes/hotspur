@@ -270,6 +270,48 @@ hotspur_search/
 - **Theatre**: Script analysis, character study
 - **General public**: Shakespeare exploration and enjoyment
 
+### Post-Launch Bug Fix (Day 3)
+
+#### Issue: Work Filtering Not Working
+**Problem Discovered**: User reported that search worked fine with "All Works" selected, but returned empty results when filtering by specific works.
+
+**Investigation Process**:
+1. Created `debug_work_filtering.py` to systematically diagnose the issue
+2. Found that basic searches worked (returning results from multiple works)
+3. Discovered work-specific filters consistently returned 0 results
+4. Identified root cause through step-by-step query analysis
+
+**Root Cause Identified**:
+- **Schema Design Flaw**: `work_title` field was defined as `TEXT` type in Whoosh schema
+- **Tokenization Issue**: TEXT fields are tokenized, so "THE TRAGEDY OF ROMEO AND JULIET" became separate searchable tokens
+- **Matching Failure**: Exact string matching failed because index stored individual words, not complete titles
+
+**Solution Implemented**:
+1. **Schema Fix**: Changed `work_title` from `TEXT(stored=True, field_boost=2.0)` to `ID(stored=True)`
+2. **Index Rebuild**: Completely rebuilt search index with corrected schema
+3. **Verification**: Tested work-specific filtering to confirm resolution
+
+**Files Created for Bug Fix**:
+- `debug_work_filtering.py` - Systematic diagnosis script
+- `fix_work_filtering.py` - Automated fix implementation
+
+**Technical Details**:
+```python
+# Before (broken)
+work_title=TEXT(stored=True, field_boost=2.0)  # Tokenized field
+
+# After (fixed)  
+work_title=ID(stored=True)  # Exact matching field
+```
+
+**Validation**:
+- ✅ "All Works" search continues to work
+- ✅ Work-specific filtering now returns correct results
+- ✅ All search types (word/phrase/regex/fuzzy) work with filtering
+- ✅ Performance unaffected (still sub-second responses)
+
+**User Impact**: Critical usability issue resolved - scholars can now search within specific plays as intended.
+
 ---
 
 ## Conclusion
