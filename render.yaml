@@ -1,0 +1,18 @@
+# Render deployment configuration for Hotspur Shakespeare Search
+
+services:
+  - type: web
+    name: hotspur-shakespeare-search
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "streamlit run hotspur_search/streamlit_app/app.py --server.port $PORT --server.address 0.0.0.0"
+    plan: free
+    envVars:
+      - key: STREAMLIT_SERVER_PORT
+        value: $PORT
+      - key: STREAMLIT_SERVER_ADDRESS
+        value: 0.0.0.0
+      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+        value: false
+      - key: STREAMLIT_THEME_BASE
+        value: light

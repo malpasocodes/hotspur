@@ -94,6 +94,10 @@ model.safetensors
 pytorch_model.bin
 *.h5
 
+# Search component generated files
+hotspur_search/index/
+hotspur_search/data/
+
 # Logs and monitoring
 logs/
 *.log
