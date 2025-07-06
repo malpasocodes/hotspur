@@ -4,9 +4,9 @@ services:
   - type: web
     name: hotspur-shakespeare-search
     env: python
-    buildCommand: "./build_memory_optimized.sh"
+    buildCommand: "./build.sh"
     startCommand: "streamlit run hotspur_search/streamlit_app/app.py --server.port $PORT --server.address 0.0.0.0"
-    plan: free
+    plan: starter
     envVars:
       - key: STREAMLIT_SERVER_PORT
         value: $PORT
