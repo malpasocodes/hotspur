@@ -24,7 +24,8 @@ fi
 
 # Parse Shakespeare texts and create search index
 echo "🔍 Setting up search system..."
-python hotspur_search/setup_search.py
+echo "🔧 Using fixed parser for proper work detection..."
+python fix_parser.py
 
 # Verify the build
 echo "✅ Verifying build..."
